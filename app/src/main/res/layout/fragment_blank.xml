@@ -6,32 +6,47 @@
     android:layout_height="match_parent"
     android:background="#2196F3">
 
-    <EditText
-        android:id="@+id/editText"
-        style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFC107"
-        android:ems="10"
-        android:inputType="textPersonName"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="10dp"
+        android:layout_height="0dp"
+        android:fontFamily="monospace"
+        android:text="Ще не вмерла України ни слава, ни воля"
         android:textColor="#FFC107"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="#FFC107"
-        android:text="Button"
-        android:textColor="#2196F3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="1.0" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="10dp"
+        android:layout_height="0dp"
+        android:fontFamily="monospace"
+        android:text="Ще нам, браття українці, усмехнеться доля"
+        android:textColor="#FFC107"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="10dp"
+        android:layout_height="0dp"
+        android:fontFamily="monospace"
+        android:text="Сгинуть наши вороженьки, як роса на сонці"
+        android:textColor="#FFC107"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="10dp"
+        android:layout_height="0dp"
+        android:fontFamily="monospace"
+        android:text="Запануємо ми, браття, у своїй сторонці"
+        android:textColor="#FFC107"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/textView3"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
