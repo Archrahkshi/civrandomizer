@@ -22,12 +22,12 @@ class BlankFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        button2.setOnClickListener {
-            val fragment = BlankFragment2()
-            val bundle = Bundle()
-            bundle.putString("someData", editText.text.toString())
-            fragment.arguments = bundle
-            fragmentManager?.beginTransaction()?.replace(R.id.frameLayout, fragment)?.commit()
-        }
+//        button2.setOnClickListener {
+//            val fragment = BlankFragment2()
+//            val bundle = Bundle()
+//            bundle.putString("someData", editText.text.toString())
+//            fragment.arguments = bundle
+//            fragmentManager?.beginTransaction()?.replace(R.id.frameLayout, fragment)?.commit()
+//        }
     }
 }
