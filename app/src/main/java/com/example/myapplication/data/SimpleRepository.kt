@@ -36,4 +36,30 @@ class SimpleRepository {
             }
         })
     }
+
+    fun getPostsByUserId(userId: Int, result: (List<Post>) -> Unit) {
+        api.getPostsByUserId(userId).enqueue(object : Callback<List<Post>> {
+            override fun onFailure(call: Call<List<Post>>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+                result(response.body() ?: emptyList())
+            }
+
+        })
+    }
+
+    fun createNewPost(post: Post, result: (Boolean) -> Unit) {
+        api.createNewPost(post).enqueue(object : Callback<Post> {
+            override fun onFailure(call: Call<Post>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<Post>, response: Response<Post>) {
+                result(response.body() != null)
+            }
+
+        })
+    }
 }

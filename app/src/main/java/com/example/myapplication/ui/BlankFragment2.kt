@@ -23,9 +23,9 @@ class BlankFragment2 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Glide.with(this)
-            .load("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Emblem_of_Kazakhstan_latin.svg/250px-Emblem_of_Kazakhstan_latin.svg.png")
-            .apply(RequestOptions().circleCrop())
-            .into(imageView2)
+//        Glide.with(this)
+//            .load("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Emblem_of_Kazakhstan_latin.svg/250px-Emblem_of_Kazakhstan_latin.svg.png")
+//            .apply(RequestOptions().circleCrop())
+//            .into(imageView2)
     }
 }
