@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
+import com.example.myapplication.data.SimpleAdapter
+import com.example.myapplication.data.SimpleRepository
 import kotlinx.android.synthetic.main.fragment_blank_fragment2.*
 
 class BlankFragment2 : Fragment() {
@@ -22,6 +24,14 @@ class BlankFragment2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val repo = SimpleRepository()
+        val adapter = SimpleAdapter()
+
+        recyclerView.adapter = adapter   // Привязка
+        repo.getAllPosts {
+            adapter.addPosts(it)
+        }
 
 //        Glide.with(this)
 //            .load("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Emblem_of_Kazakhstan_latin.svg/250px-Emblem_of_Kazakhstan_latin.svg.png")
