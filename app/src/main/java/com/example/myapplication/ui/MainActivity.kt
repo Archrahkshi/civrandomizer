@@ -13,22 +13,43 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().add(
             R.id.frameLayout,
-            BlankFragment()
+            FragmentPosts()
         ).commit()
 
-        button3.setOnClickListener {
+        buttonFragment1.setOnClickListener {
             supportFragmentManager.beginTransaction().replace(
                 R.id.frameLayout,
-                BlankFragment()
+                FragmentPosts()
             ).commit()
         }
 
-        button4.setOnClickListener {
-            val fragment = BlankFragment2()
+        buttonFragment2.setOnClickListener {
+            val fragment = FragmentCoroutines()
             val bundle = Bundle()
             bundle.putString("someData", "Ще не вмерла України\nНи слава, ни воля.\nЩе нам, браття українцi,\nУсмехнеться доля.")
             fragment.arguments = bundle
             supportFragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commit()
+        }
+
+        buttonFragment3.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(
+                R.id.frameLayout,
+                FragmentSearchWeather()
+            ).commit()
+        }
+
+        buttonFragment4.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(
+                R.id.frameLayout,
+                BlankFragment4()
+            ).commit()
+        }
+
+        buttonFragment5.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(
+                R.id.frameLayout,
+                FragmentPeople()
+            ).commit()
         }
     }
 }

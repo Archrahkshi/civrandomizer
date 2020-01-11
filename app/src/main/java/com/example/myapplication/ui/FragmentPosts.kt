@@ -9,16 +9,16 @@ import android.widget.Toast
 import com.example.myapplication.R
 import com.example.myapplication.data.Post
 import com.example.myapplication.data.SimpleRepository
-import kotlinx.android.synthetic.main.fragment_blank.*
+import kotlinx.android.synthetic.main.fragment_posts.*
 
-class BlankFragment : Fragment() {
+class FragmentPosts : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_blank, container, false)
+        return inflater.inflate(R.layout.fragment_posts, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

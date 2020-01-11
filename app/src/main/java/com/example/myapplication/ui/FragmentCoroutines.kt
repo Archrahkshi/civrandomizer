@@ -1,25 +1,29 @@
 package com.example.myapplication.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
+import com.example.myapplication.data.OurThread
 import com.example.myapplication.data.SimpleAdapter
 import com.example.myapplication.data.SimpleRepository
-import kotlinx.android.synthetic.main.fragment_blank_fragment2.*
+import kotlinx.android.synthetic.main.fragment_coroutines.*
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
-class BlankFragment2 : Fragment() {
+class FragmentCoroutines(
+    override val coroutineContext: CoroutineContext = Dispatchers.Default
+) : Fragment(), CoroutineScope {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_blank_fragment2, container, false)
+        return inflater.inflate(R.layout.fragment_coroutines, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,6 +35,29 @@ class BlankFragment2 : Fragment() {
         recyclerView.adapter = adapter   // Привязка
         repo.getAllPosts {
             adapter.addPosts(it)
+        }
+
+        OurThread("OneThread").start()
+        val thread = OurThread("AnotherThread")
+        thread.start()
+        thread.join()
+        Thread {
+            repeat(5) {
+                Log.wtf("From lambda", it.toString())
+            }
+        }.start()
+        Log.wtf("mainThread", "Йоу")
+
+        GlobalScope.launch {
+            repeat(5) {
+                Log.wtf("From coroutine", it.toString())
+            }
+        }
+
+        launch {
+            repeat(5) {
+                Log.wtf("From CoroutineScope", it.toString())
+            }
         }
 
 //        Glide.with(this)
