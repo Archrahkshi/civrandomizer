@@ -24,53 +24,23 @@
         app:layout_constraintStart_toStartOf="parent" >
 
         <Button
-            android:id="@+id/buttonFragment1"
+            android:id="@+id/buttonFragmentRandomizer"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#000000"
-            android:text="1"
+            android:background="@android:color/black"
+            android:text="@string/randomizer"
             android:textColor="#FF0000" />
 
         <Button
-            android:id="@+id/buttonFragment2"
+            android:id="@+id/buttonFragmentCivs"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#000000"
-            android:text="2"
-            android:textColor="#FF0000" />
-
-        <Button
-            android:id="@+id/buttonFragment3"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#000000"
-            android:text="3"
-            android:textColor="#FF0000" />
-
-        <Button
-            android:id="@+id/buttonFragment4"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#000000"
-            android:text="4"
-            android:textColor="#FF0000" />
-
-        <Button
-            android:id="@+id/buttonFragment5"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#000000"
-            android:text="5"
+            android:background="@android:color/black"
+            android:text="@string/civilizations"
             android:textColor="#FF0000" />
 
     </LinearLayout>
