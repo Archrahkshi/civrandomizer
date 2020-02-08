@@ -1,9 +1,12 @@
 package com.archrahkshi.civrandomizer.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
 import com.archrahkshi.civrandomizer.R
 import com.archrahkshi.civrandomizer.data.CivsRepository
@@ -31,18 +34,32 @@ class RandomizerFragment(
         buttonRandomize.setOnClickListener {
             launch {
                 val playerCount = spinnerPlayers.selectedItem.toString().toInt()
-                val playerCivs = CivsRepository().getNRandomCivsAsync(
-                    playerCount * spinnerCivsPerPlayer.selectedItem.toString().toInt()
+                Log.wtf("Player count", playerCount.toString())
+                val civsPerPlayerCount = spinnerCivsPerPlayer.selectedItem.toString().toInt()
+                val randomizedCivs = CivsRepository().getNRandomCivsAsync(
+                    playerCount * civsPerPlayerCount
                 ).await()
-                recyclerViewRandomizer.adapter = RandomizerAdapter(
-                    List(playerCount + playerCivs.size) {
-                        if (it % playerCount == 0) {
-                            "Player ${it / playerCount + 1}"
-                        } else {
-                            playerCivs.elementAt(it - it / playerCount - 1)
+                Log.wtf("Randomized civs count", randomizedCivs.size.toString())
+
+                try {
+                    var player = 0
+                    recyclerViewRandomizer.adapter = RandomizerAdapter(
+                        List(playerCount + randomizedCivs.size) {
+                            if (it % (civsPerPlayerCount + 1) == 0) {
+                                player++
+                                getString(R.string.player) + " " + player
+                            } else {
+                                randomizedCivs.elementAt(it - player)
+                            }
                         }
-                    }
-                )
+                    )
+                } catch (e: IndexOutOfBoundsException) {
+                    Toast.makeText(
+                        context,
+                        getString(R.string.not_enough_civilizations),
+                        LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }

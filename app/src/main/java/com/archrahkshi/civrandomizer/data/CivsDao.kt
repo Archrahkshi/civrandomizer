@@ -13,7 +13,7 @@ interface CivsDao {
     @Query("SELECT * FROM civ ORDER BY civ.leader")
     fun getAll(): List<Civ>
 
-    @Query("SELECT * FROM civ WHERE civ.author == :author")
+    @Query("""SELECT * FROM civ WHERE civ.author == :author OR civ.author == """"")
     fun getByAuthor(author: String): List<Civ>
 
     @Query("SELECT * FROM civ ORDER BY RANDOM() LIMIT :n")

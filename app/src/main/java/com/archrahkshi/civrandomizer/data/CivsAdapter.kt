@@ -46,7 +46,7 @@ class CivsAdapter(
             civ.apply {
                 textViewLeader.text = leader
                 textViewNation.text = nation
-                textViewAuthor.text = author
+                textViewAuthor.text = if (author != "") author else "Vanilla"
             }
 
             imageViewAvatar.setOnLongClickListener {

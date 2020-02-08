@@ -6,6 +6,8 @@ import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import com.archrahkshi.civrandomizer.R
 import com.archrahkshi.civrandomizer.data.Civ
@@ -34,6 +36,12 @@ class AddCivFragment(
         editTextLeader.text = SpannableStringBuilder(arguments?.getString("leader") ?: "")
         editTextNation.text = SpannableStringBuilder(arguments?.getString("nation") ?: "")
         editTextAuthor.text = SpannableStringBuilder(arguments?.getString("author") ?: "")
+
+        editTextLeader.requestFocus()
+        activity?.currentFocus?.let {
+            val imm = getSystemService(context!!, InputMethodManager::class.java)
+            imm?.showSoftInput(it, 0)
+        }
 
         val repo = CivsRepository()
 

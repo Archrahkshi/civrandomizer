@@ -37,7 +37,7 @@ class RandomizerAdapter(
                 is Civ -> item.apply {
                     textViewLeader.text = leader
                     textViewNation.text = nation
-                    textViewAuthor.text = author
+                    textViewAuthor.text = if (author != "") author else "Vanilla"
                 }
                 is String -> textViewPlayerN.text = item
             }

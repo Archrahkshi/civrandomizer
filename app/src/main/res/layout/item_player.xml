@@ -9,7 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/alegreya_sc"
         android:text="@string/player_n"
-        android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="18sp" />
 </LinearLayout>

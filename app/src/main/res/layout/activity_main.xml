@@ -29,9 +29,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/black"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/alegreya_sc"
             android:text="@string/randomizer"
-            android:textColor="#FF0000" />
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/buttonFragmentCivs"
@@ -39,9 +42,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/black"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/alegreya_sc"
             android:text="@string/civilizations"
-            android:textColor="#FF0000" />
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

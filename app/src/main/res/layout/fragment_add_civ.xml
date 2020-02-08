@@ -22,9 +22,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:ems="10"
+            android:fontFamily="@font/alegreya_sc"
             android:hint="@string/leader"
-            android:inputType="textPersonName"
             android:importantForAutofill="no"
+            android:inputType="textPersonName|textCapWords"
+            android:nextFocusRight="@+id/editTextNation"
+            android:nextFocusDown="@+id/editTextNation"
+            android:nextFocusForward="@+id/editTextNation"
             android:textAlignment="center" />
 
         <EditText
@@ -33,9 +37,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:ems="10"
+            android:fontFamily="@font/alegreya_sc"
             android:hint="@string/nation"
-            android:inputType="textPersonName"
             android:importantForAutofill="no"
+            android:inputType="textPersonName|textCapWords"
+            android:nextFocusRight="@+id/editTextAuthor"
+            android:nextFocusDown="@+id/editTextAuthor"
+            android:nextFocusForward="@+id/editTextAuthor"
             android:textAlignment="center" />
 
         <EditText
@@ -44,9 +52,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:ems="10"
+            android:fontFamily="@font/alegreya_sc"
             android:hint="@string/author"
-            android:inputType="textPersonName"
             android:importantForAutofill="no"
+            android:inputType="textPersonName|textCapWords"
+            android:nextFocusLeft="@+id/editTextNation"
+            android:nextFocusUp="@+id/editTextNation"
+            android:nextFocusDown="@+id/buttonDone"
+            android:nextFocusForward="@+id/buttonDone"
             android:textAlignment="center" />
 
         <Button
@@ -54,10 +67,12 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@android:color/black"
+            android:layout_marginTop="48dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/alegreya_sc"
             android:text="@string/done"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
