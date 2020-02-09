@@ -19,7 +19,7 @@ class CivsRepository(override val coroutineContext: CoroutineContext = Dispatche
     fun getCivsAsync(option: String) = async {
         when (option) {
             "All" -> App.db.civsDao().getAll()
-            "Vanilla" -> App.db.civsDao().getByAuthor("Vanilla")
+            "Vanilla" -> App.db.civsDao().getByAuthor("")
             "JFD" -> App.db.civsDao().getByAuthor("JFD")
             else -> App.db.civsDao().getAll()
         }

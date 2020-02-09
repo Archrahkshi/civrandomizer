@@ -1,92 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/textViewPlayers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:fontFamily="@font/alegreya_sc"
-        android:text="@string/players"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewCivsPerPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:fontFamily="@font/alegreya_sc"
-        android:text="@string/civs_per_player"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/textViewPlayers" />
-
-    <Spinner
-        android:id="@+id/spinnerPlayers"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:entries="@array/players"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewPlayers"
-        app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="@id/textViewPlayers" />
-
-    <Spinner
-        android:id="@+id/spinnerCivsPerPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:entries="@array/civsPerPlayer"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewCivsPerPlayer"
-        app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="@id/textViewCivsPerPlayer" />
-
-    <Button
-        android:id="@+id/buttonRandomize"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:background="@color/colorPrimary"
-        android:fontFamily="@font/alegreya_sc"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:text="@string/randomize"
-        android:textColor="@color/colorAccent"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="140dp" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCivsPerPlayer">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewRandomizer"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="30"
-            tools:listitem="@layout/item_player" />
+            android:layout_height="0dp">
+
+            <TextView
+                android:id="@+id/textViewPlayers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:fontFamily="@font/alegreya_sc"
+                android:text="@string/players"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewCivsPerPlayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:fontFamily="@font/alegreya_sc"
+                android:text="@string/civs_per_player"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@id/textViewPlayers" />
+
+            <Spinner
+                android:id="@+id/spinnerPlayers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:entries="@array/players"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewPlayers"
+                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintTop_toTopOf="@id/textViewPlayers" />
+
+            <Spinner
+                android:id="@+id/spinnerCivsPerPlayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:entries="@array/civsPerPlayer"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewCivsPerPlayer"
+                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintTop_toTopOf="@id/textViewCivsPerPlayer" />
+
+            <Button
+                android:id="@+id/buttonRandomize"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/alegreya_sc"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="@string/randomize"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="140dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewRandomizer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="104dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewCivsPerPlayer"
+                tools:itemCount="30"
+                tools:listitem="@layout/item_player" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
