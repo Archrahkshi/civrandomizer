@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#80FFDF9C"
     tools:context=".ui.CivsFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -19,10 +20,10 @@
                 android:id="@+id/spinnerFilter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical|end"
-                android:textAlignment="textEnd"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
+                android:gravity="center_vertical|end"
+                android:textAlignment="textEnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,10 +31,10 @@
                 android:id="@+id/recyclerViewCivs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="16dp"
                 app:layout_constraintTop_toBottomOf="@id/buttonAdd"
                 tools:layout_editor_absoluteY="50dp"
                 tools:listitem="@layout/item_civ" />
