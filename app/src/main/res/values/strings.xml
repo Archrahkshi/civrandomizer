@@ -15,5 +15,10 @@
     <string name="add">Add</string>
     <string name="not_enough_civilizations">Not enough civilizations</string>
     <string name="player">Player</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="vanilla">Vanilla</string>
+    <string name="jfd">JFD</string>
 
 </resources>

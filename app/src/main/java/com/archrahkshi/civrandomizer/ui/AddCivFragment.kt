@@ -1,6 +1,5 @@
 package com.archrahkshi.civrandomizer.ui
 
-
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
@@ -26,9 +25,7 @@ class AddCivFragment(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_add_civ, container, false)
-    }
+    ): View? = inflater.inflate(R.layout.fragment_add_civ, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,16 +35,14 @@ class AddCivFragment(
         editTextAuthor.text = SpannableStringBuilder(arguments?.getString("author") ?: "")
 
         editTextLeader.requestFocus()
-        activity?.currentFocus?.let {
-            val imm = getSystemService(context!!, InputMethodManager::class.java)
-            imm?.showSoftInput(it, 0)
-        }
-
-        val repo = CivsRepository()
+        getSystemService(
+            context!!,
+            InputMethodManager::class.java
+        )?.showSoftInput(activity?.currentFocus, 0)
 
         buttonDone.setOnClickListener {
             launch {
-                repo.insertCivAsync(
+                CivsRepository().insertCivAsync(
                     Civ(
                         leader = editTextLeader.text.toString(),
                         nation = editTextNation.text.toString(),

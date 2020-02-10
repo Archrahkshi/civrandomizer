@@ -1,10 +1,10 @@
 package com.archrahkshi.civrandomizer.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
@@ -20,7 +20,7 @@ import kotlin.coroutines.CoroutineContext
 @Suppress("IMPLICIT_CAST_TO_ANY")
 class RandomizerFragment(
     override val coroutineContext: CoroutineContext = Dispatchers.Main
-) : Fragment(), CoroutineScope {
+) : Fragment(), CoroutineScope, SeekBar.OnSeekBarChangeListener {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,15 +31,19 @@ class RandomizerFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        seekBarPlayerCount.setOnSeekBarChangeListener(this)
+        textViewPlayerCount.text = (seekBarPlayerCount.progress + 2).toString()
+
+        seekBarCivsPerPlayerCount.setOnSeekBarChangeListener(this)
+        textViewCivsPerPlayerCount.text = (seekBarCivsPerPlayerCount.progress + 1).toString()
+
         buttonRandomize.setOnClickListener {
             launch {
-                val playerCount = spinnerPlayers.selectedItem.toString().toInt()
-                Log.wtf("Player count", playerCount.toString())
-                val civsPerPlayerCount = spinnerCivsPerPlayer.selectedItem.toString().toInt()
+                val playerCount = seekBarPlayerCount.progress + 2
+                val civsPerPlayerCount = seekBarCivsPerPlayerCount.progress + 1
                 val randomizedCivs = CivsRepository().getNRandomCivsAsync(
                     playerCount * civsPerPlayerCount
                 ).await()
-                Log.wtf("Randomized civs count", randomizedCivs.size.toString())
 
                 try {
                     var player = 0
@@ -63,4 +67,13 @@ class RandomizerFragment(
             }
         }
     }
+
+    override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        textViewPlayerCount.text = (seekBarPlayerCount.progress + 2).toString()
+        textViewCivsPerPlayerCount.text = (seekBarCivsPerPlayerCount.progress + 1).toString()
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar) {}
+
+    override fun onStopTrackingTouch(seekBar: SeekBar) {}
 }

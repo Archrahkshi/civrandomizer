@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,79 +20,114 @@
                 android:id="@+id/textViewPlayers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/alegreya_sc"
                 android:text="@string/players"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
+                app:layout_constraintEnd_toEndOf="@id/textViewCivsPerPlayer"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewCivsPerPlayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/alegreya_sc"
                 android:text="@string/civs_per_player"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewPlayers" />
 
-            <Spinner
-                android:id="@+id/spinnerPlayers"
-                android:layout_width="wrap_content"
+            <SeekBar
+                android:id="@+id/seekBarPlayerCount"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:entries="@array/players"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:max="10"
+                android:progress="1"
+                android:progressTint="@color/colorPrimary"
+                android:thumbTint="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewPlayers"
-                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintEnd_toStartOf="@id/textViewPlayerCount"
+                app:layout_constraintStart_toEndOf="@+id/textViewPlayers"
                 app:layout_constraintTop_toTopOf="@id/textViewPlayers" />
 
-            <Spinner
-                android:id="@+id/spinnerCivsPerPlayer"
-                android:layout_width="wrap_content"
+            <SeekBar
+                android:id="@+id/seekBarCivsPerPlayerCount"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:entries="@array/civsPerPlayer"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:max="11"
+                android:progress="2"
+                android:progressTint="@color/colorPrimary"
+                android:thumbTint="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewCivsPerPlayer"
-                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintEnd_toStartOf="@id/textViewCivsPerPlayerCount"
+                app:layout_constraintStart_toEndOf="@+id/textViewCivsPerPlayer"
                 app:layout_constraintTop_toTopOf="@id/textViewCivsPerPlayer" />
-
-            <Button
-                android:id="@+id/buttonRandomize"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:background="@color/colorPrimary"
-                android:fontFamily="@font/alegreya_sc"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
-                android:text="@string/randomize"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="140dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewRandomizer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewCivsPerPlayer"
                 tools:itemCount="30"
                 tools:listitem="@layout/item_player" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerViewRandomizer" />
+
+            <TextView
+                android:id="@+id/textViewPlayerCount"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/alegreya_sc"
+                android:textAlignment="textEnd"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/textViewPlayers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textViewPlayers"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/textViewCivsPerPlayerCount"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/alegreya_sc"
+                android:textAlignment="textEnd"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/textViewCivsPerPlayer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textViewCivsPerPlayer"
+                tools:text="12" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-</FrameLayout>
+
+    <Button
+        android:id="@+id/buttonRandomize"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/alegreya_sc"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:text="@string/randomize"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

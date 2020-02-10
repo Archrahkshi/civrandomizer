@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.archrahkshi.civrandomizer.R
 import com.archrahkshi.civrandomizer.data.CivsAdapter
@@ -38,8 +36,6 @@ class CivsFragment(
 
         val repo = CivsRepository()
         launch {
-            val options = arrayOf("All", "Vanilla", "JFD")
-
             val adapter = CivsAdapter(
                 civs = repo.getCivsAsync("All").await().toMutableList(),
                 actionEdit = { civ ->
@@ -66,23 +62,36 @@ class CivsFragment(
 
             recyclerViewCivs.adapter = adapter
 
-            spinnerFilter.adapter = ArrayAdapter(
-                context!!,
-                android.R.layout.simple_spinner_dropdown_item,
-                options
-            )
+            val civs = repo.getCivsAsync("All").await().toMutableList()
 
-            spinnerFilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
+            toggleButtonVanilla.setOnCheckedChangeListener { button, isChecked ->
+                if (isChecked) {
                     this@CivsFragment.launch {
-                        adapter.updateCivList(civList = repo.getCivsAsync(options[position]).await())
+                        civs.addAll(repo.getCivsAsync("Vanilla").await())
+                        adapter.updateCivList(civs.sortedBy { it.leader })
+                        button.alpha = 1f
+                    }
+                } else {
+                    this@CivsFragment.launch {
+                        civs.removeAll(repo.getCivsAsync("Vanilla").await())
+                        adapter.updateCivList(civs.sortedBy { it.leader })
+                        button.alpha = .5f
+                    }
+                }
+            }
+
+            toggleButtonJFD.setOnCheckedChangeListener { button, isChecked ->
+                if (isChecked) {
+                    this@CivsFragment.launch {
+                        civs.addAll(repo.getCivsAsync("JFD").await())
+                        adapter.updateCivList(civs.sortedBy { it.leader })
+                        button.alpha = 1f
+                    }
+                } else {
+                    this@CivsFragment.launch {
+                        civs.removeAll(repo.getCivsAsync("JFD").await())
+                        adapter.updateCivList(civs.sortedBy { it.leader })
+                        button.alpha = .5f
                     }
                 }
             }
